@@ -12,18 +12,38 @@
             color: #333;
         }
         header {
-            background-color: #00796b;
+            background-color: rgba(0, 121, 107, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 25px;
+            padding: 5px 25px;
+            position: relative;
+            z-index: 100;
         }
         header img.logo {
-            height: 80px;
+            height: 100px;
             background: none;
             padding: 0;
             box-shadow: none;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 101;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
         }
         nav ul {
             list-style: none;
@@ -43,10 +63,64 @@
         nav ul li a:hover {
             color: #b2dfdb;
         }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgba(0, 121, 107, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            nav.active {
+                max-height: 400px;
+            }
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            nav ul li {
+                margin: 10px 0;
+                margin-left: 0;
+            }
+            nav ul li a {
+                display: block;
+                padding: 10px;
+            }
+            header img.logo {
+                height: 60px;
+            }
+        }
         .hero {
             background-color: #f7fafa;
+            background-image: url('hero-placeholder.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             text-align: center;
             padding: 60px 20px 40px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(247, 250, 250, 0.85);
+            z-index: 1;
+        }
+        .hero > * {
+            position: relative;
+            z-index: 2;
         }
         .hero h1 {
             font-size: 2.2rem;
@@ -77,17 +151,21 @@
         }
         .donate-button {
             display: inline-block;
-            padding: 12px 24px;
-            background-color: #00796b;
+            padding: 14px 32px;
+            background-color: #FFB300;
             color: #fff;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: bold;
-            margin-top: 10px;
-            transition: background 0.3s ease;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(255, 179, 0, 0.3);
         }
         .donate-button:hover {
-            background-color: #005f55;
+            background-color: #FF8F00;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 179, 0, 0.4);
         }
         footer {
             background-color: #333;
@@ -112,7 +190,12 @@
 <body>
     <header>
         <img src="logo-white.png" alt="Special Ones Foundation logo" class="logo">
-        <nav>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="our-work.html">Our Work</a></li>
@@ -130,7 +213,7 @@
         <h2>"10 = 1" Project</h2>
         <p><strong>$10 provides 1 nutritious meal per child.</strong> Every day, thousands of children in rural and underserved communities face hunger as a normal part of life. For many, school, play, and even sleep happen on an empty stomach. We believe no child should have to choose between learning and hunger. This project meets an urgent need by providing nutritious, reliable meals to children who would otherwise go without.</p>
         <p>Each $10 donation provides one meal, while $5 helps us extend our reach even further. Every dollar goes directly toward sourcing, preparing, and distributing meals to rural communities where access to food is limited. With transparency and care, we track every meal provided—because behind each number is a child whose day is changed.</p>
-        <a class="donate-button" href="https://www.gofundme.com/f/meals-hope-for-kids-this-christmas/cl/o?utm_campaign=fp_sharesheet&utm_content=amp17_te&utm_medium=customer&utm_source=copy_link&lang=en_US&attribution_id=sl%3A2d5e661b-02b3-45d6-8147-9cdc63c0e347" target="_blank">Donate Now</a>
+        <a class="donate-button" href="https://www.gofundme.com/f/meals-hope-for-kids-this-christmas/cl/o?utm_campaign=fp_sharesheet&utm_content=amp17_te&utm_medium=customer&utm_source=copy_link&lang=en_US&attribution_id=sl%3A2d5e661b-02b3-45d6-8147-9cdc63c0e347" target="_blank">Donate</a>
     </section>
     <section class="section">
         <h2>Amplify Our Impact</h2>
@@ -142,5 +225,24 @@
         <p>203.275.9737 | ask@sofinc.org</p>
         <p><a href="https://docs.google.com/spreadsheets/d/1PuwyuIEbUY-HrKO67aTwyBxtByIpMtfuCKHhSPi0Nsw/edit?gid=1160771654#gid=1160771654" target="_blank">View Financial Statements</a></p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var hamburger = document.getElementById('hamburger');
+            var nav = document.getElementById('nav');
+            
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+                
+                var navLinks = nav.querySelectorAll('a');
+                navLinks.forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('active');
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
