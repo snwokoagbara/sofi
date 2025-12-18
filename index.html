@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Ones Foundation - Home</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            color: #333;
+        }
+        header {
+            background-color: #00796b;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+        header img.logo {
+            height: 80px;
+            background: none;
+            padding: 0;
+            box-shadow: none;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #b2dfdb;
+        }
+        .hero {
+            background-color: #f7fafa;
+            text-align: center;
+            padding: 80px 20px 60px;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px;
+            color: #00796b;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .counters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 60px;
+            margin-top: 40px;
+        }
+        .counter {
+            text-align: center;
+            padding: 30px 40px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 180px;
+        }
+        .counter h2 {
+            font-size: 4rem;
+            margin: 0;
+            color: #00796b;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .counter span.label {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 600;
+        }
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #00796b;
+        }
+        .section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        footer p {
+            margin: 5px 0;
+        }
+        footer a {
+            color: #b2dfdb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .counter {
+                padding: 20px 30px;
+                min-width: 140px;
+            }
+            .counter h2 {
+                font-size: 2.5rem;
+            }
+            .counter span.label {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Target values for counters. Update these values to reflect real metrics.
+            var kidsTarget = 300;
+            var mealsTarget = 600;
+            var kidsCount = 0;
+            var mealsCount = 0;
+            var kidsElem = document.getElementById('kidsCount');
+            var mealsElem = document.getElementById('mealsCount');
+            var interval = setInterval(function() {
+                if (kidsCount < kidsTarget) {
+                    kidsCount++;
+                    kidsElem.textContent = kidsCount;
+                }
+                if (mealsCount < mealsTarget) {
+                    mealsCount++;
+                    mealsElem.textContent = mealsCount;
+                }
+                if (kidsCount >= kidsTarget && mealsCount >= mealsTarget) {
+                    clearInterval(interval);
+                }
+            }, 20);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="logo-white.png" alt="Special Ones Foundation logo" class="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="our-work.html">Our Work</a></li>
+                <li><a href="support-us.html">Support Us</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h1>Empowering Special Ones</h1>
+        <p>No child’s future should be limited by disability or hunger. Together we nourish minds and bodies.</p>
+        <div class="counters">
+            <div class="counter">
+                <h2 id="kidsCount">0</h2>
+                <span class="label">Kids Fed</span>
+            </div>
+            <div class="counter">
+                <h2 id="mealsCount">0</h2>
+                <span class="label">Meals Served</span>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <h2>Our Mission</h2>
+        <p>We believe no child’s future should be limited by disability or hunger. At the Special Ones Foundation, we support children with developmental differences while providing nourishing meals to underserved children in need. By empowering minds and sustaining bodies, we help every child grow, dream and reach their fullest potential. One meal can restore strength and one act of support can unlock possibility.</p>
+    </section>
+    <section class="section">
+        <h2>Latest Initiative</h2>
+        <p>With just $600 and the help of micro food influencers and content creators, we are organizing community lunches for children who would otherwise go without meals this season. Each creator hosts a local lunch, documenting the experience to raise awareness and inspire donations so we can expand our reach. Every event feeds children and tells a story of hope.</p>
+    </section>
+    <footer>
+        <p>&copy; Special Ones Foundation, Inc. 2021</p>
+        <p>203.275.9737 | ask@sofinc.org</p>
+        <p><a href="https://docs.google.com/spreadsheets/d/1PuwyuIEbUY-HrKO67aTwyBxtByIpMtfuCKHhSPi0Nsw/edit?gid=1160771654#gid=1160771654" target="_blank">View Financial Statements</a></p>
+    </footer>
+</body>
+</html>
